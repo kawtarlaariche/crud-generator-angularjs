@@ -19,8 +19,12 @@ var path = outputs_folder + '/' + config.pages_path + '/' + list[i].toLowerCase(
 fileUtil.createDir(path)
 
 
-
 fs.writeFile(path + "/" + list[i].toLowerCase() + 'Service.js', fileUtil.beautify(serviceGenerator.generate('wohnheim', list[i])), function (err) {
+    if (err) throw err;
+    console.log('Saved!');
+});
+
+fs.writeFile(path + "/" + list[i].toLowerCase() + 'Controller.js', fileUtil.beautify(controllerGenerator.generate('wohnheim', list[i])), function (err) {
     if (err) throw err;
     console.log('Saved!');
 });
