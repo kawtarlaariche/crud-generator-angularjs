@@ -21,7 +21,9 @@ function createSrvcMethod(name, params, httpOptions) {
 function buildCRUDMethods(model) {
     const cruds = [
         { name: 'create', params: ['data'], httpOptions: "{method: 'POST',\n url: baseApi + '/" + getModelUrl(model) + "',\n data: data}" },
-        { name: 'findAll', params: [], httpOptions: "{method: 'GET',\n url: baseApi + '/" + getModelUrl(model) + "'\n}" }
+        { name: 'findAll', params: [], httpOptions: "{method: 'GET',\n url: baseApi + '/" + getModelUrl(model) + "'\n}" },
+        { name: 'delete', params: ['data'], httpOptions: "{method: 'DELETE', \n ulr: baseApi + '/" + getModelUrl(model) + "'+data\n}" },
+        { name: 'update', params: ['data'], httpOptions: "{methos: 'PUT', \n url: baseApi + '/" + getModelUrl(model) + "'+data, \n data: data}" }
     ]
 
     methods = []
