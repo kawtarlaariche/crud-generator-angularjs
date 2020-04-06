@@ -14,13 +14,17 @@ var config = {
 var list = ['Etudiant', 'Chambre', 'Batiment', 'Couloire', 'Strasse']
 
 
-var i = 3
+var i = 4
 var path = outputs_folder + '/' + config.pages_path + '/' + list[i].toLowerCase()
 fileUtil.createDir(path)
 
 
-fs.writeFile(path + "/" + list[i].toLowerCase() + 'Service.js', serviceGenerator.generate('wohnheim', list[i]), function (err) {
+
+fs.writeFile(path + "/" + list[i].toLowerCase() + 'Service.js', fileUtil.beautify(serviceGenerator.generate('wohnheim', list[i])), function (err) {
     if (err) throw err;
     console.log('Saved!');
 });
+
+
+
 
