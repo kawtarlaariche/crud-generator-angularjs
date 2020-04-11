@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Simple CRUD generator with angularjs ",
   "main": "app.js",
+  "keywords": [
+    "crud", "crud generator", "angularjs", "angular.js", "generator"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
