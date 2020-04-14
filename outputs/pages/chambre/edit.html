@@ -1,0 +1,14 @@
+<h1 class="page-header">Chambre</h1>
+<div class="panel panel-default">
+  <div class="panel-heading">Edit Chambre</div>
+  <div class="panel-body">
+    <form role="form">
+      <div class="form-group"><label class="sr-only">nom:</label>
+        <input type="text" ng-model="chambre.nom"> </div>
+      <div class="form-group"><label class="sr-only">age:</label>
+        <input type="number" ng-model="chambre.age"> </div>
+      <div class="form-group"><label class="sr-only">createdAt:</label>
+        <input type="date" ng-model="chambre.createdAt"> </div><button type="submit" class="btn btn-default" ng-click="update(chambre)">Edit Button</button>
+    </form>
+  </div>
+</div>

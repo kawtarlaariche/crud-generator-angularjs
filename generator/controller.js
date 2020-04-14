@@ -12,7 +12,7 @@ function createCtrlHeader(params) {
 }
 
 function createCtrlBody(model) {
-    return "{" + getModel(model) + "\n" + findAll(model) + create(model) + deletee(model) + "}"
+    return "{" + getModel(model) + "\n" + initialize(model) + findAll(model) + create(model) + deletee(model) + update(model)+"}"
 }
 
 function getModel(model) {
@@ -37,11 +37,17 @@ function deletee(model) {
     return "$scope.delete = function(index," + model.toLowerCase() + "){\n" + model + "Service.delete(" + model.toLowerCase() + ".id).then(function(){ $scope." + getModels(model) + ".splice(index, 1); })}"
 }
 
+ function initialize(model){
+     return "if($routeParams.id != undefined) {"+model+"Service.findById($routeParams.id).then(function("+model.toLowerCase()+"){$scope."+model+"="+model.toLowerCase()+"});}\n"
+ }
+function update(model) {
+    return "$scope.update = function(" + model.toLowerCase() + "){\n "+model+"Service.update("+model.toLowerCase()+","+model.toLowerCase()+".id).then(function(){});}"
+}
 
 function generate(module, model) {
     var txt = defineModule(module) + "\n"
     txt += createController(model + 'Ctrl') + "\n"
-    txt += createCtrlHeader(['$scope', model + 'Service']) + "\n"
+    txt += createCtrlHeader(['$scope', model + 'Service', '$routeParams']) + "\n"
     txt += createCtrlBody(model)
     return txt
 }
